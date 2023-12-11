@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1>Name of the customer: {{ u }}</h1>
+
+<div class="container-fluid">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Order Date</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Book Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Gross Total</th>
+            <th>Grand Total <br>
+            After adding GST & Shipping Charge</th>
+            <th>Payment Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in o %}
+            <tr>
+                <td><img src="{{ i.book.image.url }}" style="width: 170px; height: 200px;"></td>
+                <td>{{ i.date_added }}</td>
+                <td>{{ i.address }}</td>
+                <td>{{ i.phone }}</td>
+                <td>{{ i.book }}</td>
+                <td>{{ i.book.price }}</td>
+                <td>{{ i.noofitems }}</td>
+                <td>{{ i.subtotal }}</td>
+                <td>{{ i.grand_total }}</td>
+
+                <td>{{ i.order_status }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

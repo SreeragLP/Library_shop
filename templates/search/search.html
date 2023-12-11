@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+
+</style>
+
+<center>
+<div class="row">
+        {% for i in b %}
+        <div class="col-4">
+
+            <div class="card" style="width: 25rem;">
+  <img src="{{i.image.url}}" class="card-img-top" height="450px" width="100%" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{i.bname}}</h5>
+
+    <p class="card-text">{{i.price}}</p>
+    <a href="{% url 'library:detailed_view' i.bname %}" style="position:relative;left:40%;" class="btn btn-primary">Details</a>
+  </div>
+
+</div>
+        </div>
+        {% empty %}
+    <h5>0 Results found</h5>
+    <div class="image-container">
+     <img class="img1" src="{% static 'images/no.gif' %}" height="490px" width="520px">
+
+    {% endfor %}
+
+    </div>
+</div>
+
+
+
+</center>
+
+
+
+
+
+
+
+
+{% endblock %}

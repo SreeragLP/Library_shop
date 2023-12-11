@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device, initial-scale=1">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>
+<body>
+<header>
+
+<div  class="new" >
+
+         <h4 style="margin: 100px; display:inline;">BookWorm Heaven</h4>
+
+        <img src="{% static 'images/boow.png' %}" height="90px" width="95px">
+
+        <h4 style="margin: 100px; display:inline">Where stories come to life</h4>
+
+    </center>
+</div>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light  mt-1" >
+  <div class="container-fluid"  >
+      <img src="{% static 'images/book.png' %}" height="50px" width="65px">
+    <a class="greenfire" class="navbar-brand" href="#" >
+        BookWorm</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a  class="nav-link active" aria-current="page" href="{% url 'library:home'%}">Home</a>
+        </li>
+
+        <li class="nav-item dropdown" >
+          <a  class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Our Library
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              {% for i in mybooks %}
+
+            <li><a class="dropdown-item" href="{% url 'library:books' i.cname %}">{{i.cname}}</a></li>
+
+              {% endfor %}
+
+          </ul>
+            </li>
+
+
+
+
+            {% if user.is_authenticated %}
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cart:cart_view' %}">
+              <i class="fa-solid fa-cart-shopping"> {{count}}</i></a>
+        </li>
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'cart:orderview' %}">Order View</i></a>
+        </li>
+
+
+
+         </li>
+
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'library:logout' %}">Logout</a>
+        </li>
+               </li>
+
+
+                {% else %}
+
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'library:register' %}">Register</a>
+        </li>
+
+
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'library:login' %}">Login</a>
+        </li>
+      </ul>
+
+
+
+            {% endif %}
+
+
+
+
+</div>
+        <form class="d-flex">
+         <p> <a href="https://twitter.com/your_twitter_username" target="_blank">
+             <i id="myicon"  class="fa-brands fa-twitter"></i>  </a></p>
+          <p> <a href="https://www.facebook.com/your_facebook_page" target="_blank">
+              <i id="myicon" class="fa-brands fa-facebook-f" ></i></a></p>
+          <p> <a href="#"><i id="myicon" class="fa-brands fa-pinterest-p" ></i></a></p>
+
+      </form>
+
+  <div class="ml-auto d-flex">
+    <form class="form-inline" method="POST" action="{% url 'search:searchresult' %}">
+        {% csrf_token %}
+      <div class="input-group">
+        <input class="form-control" type="search" name="q" placeholder="Search your books" aria-label="Search">
+        <div class="input-group-append">
+          <button class="attractive-btn" type="submit">Search</button>
+        </div>
+      </div>
+
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+     </header>
+
+
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>
+
+<footer>
+    <div class="footer"  >
+        <i class="fa fa-copyright" area-hidden="true"></i> MyLibrary Private Limited All right Reserved</p>
+    </div>
+</footer>
+
+
+

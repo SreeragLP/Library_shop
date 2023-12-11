@@ -1,0 +1,288 @@
+body {
+background-color: #E3F5FD;
+color: #333;
+font-family: 'Arial', sans-serif;
+font-size: 16px;
+line-height: 1.6;
+margin: 0;
+padding-bottom: 70px;
+}
+
+
+
+h1,h3 {
+color: #007bff;
+font-family: 'Arial', sans-serif;
+font-size: 36px;
+font-weight: bold;
+text-align: center;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+margin-bottom: 20px;
+}
+
+
+p
+{
+     font-size: 18px;
+     color: #333;
+     font-weight: bold;
+     font-family: Arial, sans-serif;
+     line-height: 1.5;
+     margin-bottom: 20px;
+}
+
+
+
+a {
+color: #a2d9ff;
+text-decoration: none;transition: color 0.3s;
+}
+
+
+a:hover {
+color: #fff;
+text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+}
+
+
+.card {
+background-color: rgba(255, 255, 255, 0.9);
+border: none;
+padding: 10px;
+margin: 25px;
+text-align: center;
+transition: transform 0.3s, box-shadow 0.3s;
+display: inline-block;
+}
+
+
+
+.card:hover {
+transform: scale(1.05);
+box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+.attractive-btn {
+padding: 10px 20px;
+background-color: rgba(15, 123, 0, 0.5);
+border-radius: 5px;
+font-weight: bold;
+text-align: center;
+transition:  transform 0.3s;
+}
+
+
+
+
+
+.container-fluid-1 {
+  padding-left: 30px;
+  padding-right: 50px;
+}
+
+
+
+
+.attractive-btn:hover {
+background-color: rgba(0, 123, 255, 0.7);
+transform: scale(1.05);
+}
+
+
+.attractive-btn:focus {
+outline: none;
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+nav {
+background-color: rgba(0, 0, 0, 0.3);
+border: 2px solid #00FF00; /* Green border */
+color: #fff;
+padding: 20px;
+text-align: center;
+position: fixed;
+width: 98%;
+transition: background-color 2.3s, box-shadow .5s;
+box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.6);
+margin: 30px auto;
+border-radius: 15px;
+
+}
+
+
+nav a {
+color: #fff;
+text-decoration: none;
+padding: 10px 20px;
+transition: color 1.3s;
+}
+
+
+
+
+#myicon
+        {margin-right:5px;
+        color:black;
+        border:0.5px solid #ccc;
+        border-radius:85%;
+        padding:12px;
+        padding-top:12px;}
+
+
+
+.footer {
+height: 45px;
+width: 100%;
+position: fixed;
+bottom: 0;
+left: 0;
+background-color: #444;
+color: #fff;
+text-align: center;
+line-height: 50px;
+opacity: 0.5;
+}
+
+
+.footer:hover {
+background-color: #250;
+opacity: 9;
+transform: scale(1.05);
+}
+
+
+
+
+.image-container {
+overflow: hidden;
+border-radius: 10px;
+}
+
+.image-container img
+{
+transition: transform 0.3s ease-in-out;
+}
+
+.image-container:hover img
+{
+transform: scale(1.05);
+}
+
+
+/* it used for animation effect of Logo moving*/
+
+.new {
+  width: 100px;
+  height: 75px;
+  display: inline;
+  position: relative;
+  animation: mymovex 18s infinite;
+  animation-timing-function: linear;
+ }
+
+@keyframes mymovex {
+  from {left: 1px;}
+  to {left: 1550px;}
+}
+
+
+
+.greenfire {
+    width: 150px;
+    height: 45px;
+    background: linear-gradient(to bottom, #006400, #003300);
+    border-radius: 10px;
+    position: relative;
+    animation: fireAnimation 0.5s ease-in-out infinite;
+}
+
+
+@keyframes fireAnimation {
+    0% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(1.2);
+    }
+    100% {
+        transform: scaleY(1);
+    }
+}
+
+
+.myform {
+  max-width: 550px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 255, 0, 1.5);
+
+}
+
+
+.form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+
+tr {
+    border: 1px solid black;
+}
+
+
+
+/* Style for the dropdown menu */
+.dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.80); /* Black background with transparency */
+    border: 1px solid #00FF00; /* Green border color */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for dropdown items */
+.dropdown-item {
+    color: #00FF00; /* Green text color */
+    font-weight: normal; /* Normal font weight */
+}
+
+
+
+/* Style for the dropdown toggle link */
+.nav-link.dropdown-toggle {
+    color: #00FF00; /* Green text color */
+    font-weight: bold; /* Bold font weight for the toggle link */
+}
+
+/* Active (open) state for the dropdown */
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block; /* Show the menu when the parent is hovered */
+}
+
+/* Add padding to the dropdown items */
+.dropdown-item {
+    padding: 8px 12px;
+}

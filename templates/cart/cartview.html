@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="text-center my-6">
+                <h1>Your Shopping Cart</h1>
+            </div>
+
+            {% if not cart %}
+                <div class="text-center empty-cart">
+                    <h2>Your Cart Is Empty</h2>
+                    <p>Looks like your cart is empty right now. Don't worry, we have a wide selection of amazing books waiting for you.</p>
+                    <a href="{% url 'library:home' %}" class="btn btn-primary">Start Shopping</a>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <img src="{% static 'images/empty-cart.gif' %}">
+            </div>
+
+            <div class="col-md-1">
+                <img src="{% static 'images/boow.png' %}" height="175px" width="165px">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+            {% else %}
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+                        <th>Book Image</th>
+                        <th>Book Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Delete</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    {% for i in cart %}
+                    <tr>
+
+                        <td><img src="{{ i.book.image.url }}" alt="{{ i.book.bname }}" class="img-thumbnail"></td>
+                        <td>{{ i.book.bname }}</td>
+                        <td>₹{{ i.book.price }}</td>
+
+                        <td>
+
+                            {% if i.quantity < i.book.stock %}
+
+                            <a href="{% url 'cart:cart_remove' i.book.bname %}">
+                                <i class="fa-solid fa-minus-circle text-danger"></i>
+                            </a>
+                            {{ i.quantity }}
+
+                            <a href="{% url 'cart:add_to_cart' i.book.bname %}">
+                                <i class="fa-solid fa-plus-circle text-success"></i>
+                            </a>
+
+                            {% else %}
+
+
+                             <a href="{% url 'cart:cart_remove' i.book.bname %}">
+                                <i class="fa-solid fa-minus-circle text-danger"></i>
+                            </a>
+                            {{ i.quantity }}
+
+                            {% endif %}
+
+                        </td>
+
+                        <td> ₹{{ i.subtotal }}</td>
+
+                        <td>
+                            <a href="{% url 'cart:full_remove' i.book.bname %}">
+                                <i class="fa-solid fa-trash text-danger"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+
+        <div class="col-md-5" style="margin-left: 100px;">
+    <div class="text-center my-5 checkout-section">
+        <h3>Checkout</h3>
+        <table class="table table-bordered">
+            <tr>
+                <td><p>Gross Total: ₹{{ total }} </p>
+                (Enjoy free shipping on orders totaling 700 or more!)</td>
+            </tr>
+                <td><p>GST : ₹{{ gst }} </p>
+                    (IGST (Integrated Goods and Services Tax) 12% applies to your total)
+                </td>
+            </tr>
+                <td><p>Shipping Charge: ₹{{ shipping_charge }}</p></td>
+            </tr>
+                <td><p>Grand Total: ₹{{ grand_total }}</p></td>
+
+            </tr>
+        </table>
+        <div class="text-center">
+            <a href="{% url 'cart:order_form' %}" class="btn btn-success" style="display: inline-block; margin-right: 10px;">Place Order</a>
+            <a href="{% url 'library:home' %}" class="btn btn-primary" style="display: inline-block;">Continue Shopping</a>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

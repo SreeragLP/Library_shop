@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>add your details</h1>
+
+<form method="POST" class="myform">
+  {% csrf_token %}
+
+  <div class="mb-4 row">
+    <label class="form-label col-sm-2">Address</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="a" placeholder="Enter address">
+    </div>
+  </div>
+
+  <div class="mb-4 row">
+    <label class="form-label col-sm-2">Phone</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="p" placeholder="Enter phone">
+    </div>
+  </div>
+
+  <div class="mb-4 row">
+    <label class="form-label col-sm-2">Payment Method</label>
+    <div class="col-sm-10">
+
+      <select id="paymentMethod" name="payment_method" >
+        <option value="select">Select Payment method</option>
+        <option value="online">Online Payment</option>
+        <option value="cod">Cash on Delivery</option>
+      </select>
+
+    </div>
+  </div>
+
+  <div class="mb-4 row" id="accountNumberField" style="display: none;">
+    <label class="form-label col-sm-2">Account Number</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="n" placeholder="Enter Account Number">
+    </div>
+  </div>
+
+  <div class="mb-3 text-center">
+    <input type="submit" class="attractive-btn" style="padding: 4px 70px;">
+  </div>
+</form>
+
+
+<script>
+
+  let paymentMethod = document.getElementById('paymentMethod');
+  let accountNumberField = document.getElementById('accountNumberField');
+
+  paymentMethod.addEventListener('change', function()
+  {
+    if (paymentMethod.value === 'online')
+    {
+      accountNumberField.style.display = 'block';
+
+    }
+
+    else if (paymentMethod.value === 'select'){
+      accountNumberField.style.display = 'none';
+    }
+
+    else {
+      accountNumberField.style.display = 'none';
+    }
+  });
+
+</script>
+
+{% endblock %}

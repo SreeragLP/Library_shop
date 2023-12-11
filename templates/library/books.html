@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<h1>Explore our {{category.cname}} collection!</h1>
+
+
+<center>
+<div  style="border: 1px solid black; display: inline-block;" class="image-container" >
+    <img src="{{category.image.url}}" height="450px" width="100%" >
+</div>
+    </center>
+
+
+
+<div class="container-fluid mt-4">
+    <h3 class="text-center mb-2">{{category.cname}}</h3>
+    <p style="text-align:justify;line-height:2;">{{category.description}}</p>
+
+
+<div class="row">
+        {% for i in b %}
+        <div class="col-4">
+
+            <div class="card" style="width: 18rem;">
+  <img src="{{i.image.url}}" class="card-img-top" height="350px" width="100%" alt="...">
+  <div class="card-body">
+    <h5 class="card-title" >{{i.bname}}</h5>
+      <h5 class="card-title">{{i.auther}}</h5>
+    <p class="card-text">{{i.price}}</p>
+    <a href="{% url 'library:detailed_view' i.bname %}" style="position:relative;left:40%;" class="btn btn-primary">Details</a>
+  </div>
+
+</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock %}
